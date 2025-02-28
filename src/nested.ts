@@ -49,7 +49,11 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const remove: Question | null = findQuestion(questions, id);
+    const newQuestionArray: Question[] = questions.filter(
+        (question: Question): boolean => question !== remove,
+    );
+    return newQuestionArray;
 }
 
 /***
