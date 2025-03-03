@@ -140,7 +140,10 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const published: Question[] = questions.map(
+        (question: Question): Question => ({ ...question, published: true }),
+    );
+    return published;
 }
 
 /***
