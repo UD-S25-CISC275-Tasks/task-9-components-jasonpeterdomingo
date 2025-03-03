@@ -192,6 +192,16 @@ export function renameQuestionById(
     return renamed;
 }
 
+/**
+ * Helper function for changeQuestionTypeById to change options field
+ */
+function setOptions(question: Question): string[] {
+    if (question.type !== "short_answer_question") {
+        return [];
+    }
+    return question.options;
+}
+
 /***
  * Consumes an array of Questions and produces a new array of Questions, where all
  * the Questions are the same EXCEPT for the one with the given `targetId`. That
@@ -204,7 +214,17 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType,
 ): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.map(
+        (question: Question): Question =>
+            question.id === targetId ?
+                {
+                    ...question,
+                    type: newQuestionType,
+                    options: setOptions(question),
+                }
+            :   question,
+    );
+    return newQuestions;
 }
 
 /**
