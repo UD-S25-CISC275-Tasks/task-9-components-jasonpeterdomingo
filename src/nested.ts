@@ -228,6 +228,22 @@ export function changeQuestionTypeById(
 }
 
 /**
+ * Helper function for editOption to set the option of the targetId
+ */
+function modifyingOptions(
+    question: Question,
+    newOption: string,
+    targetOptionIndex: number,
+): string[] {
+    if (targetOptionIndex === -1) {
+        return [...question.options, newOption];
+    }
+    return question.options.map((option: string, index: number): string =>
+        index === targetOptionIndex ? newOption : option,
+    );
+}
+
+/**
  * Consumes an array of Questions and produces a new array of Questions, where all
  * the Questions are the same EXCEPT for the one with the given `targetId`. That
  * Question should be the same EXCEPT that its `option` array should have a new element.
@@ -243,7 +259,20 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string,
 ): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.map(
+        (question: Question): Question =>
+            question.id === targetId ?
+                {
+                    ...question,
+                    options: modifyingOptions(
+                        question,
+                        newOption,
+                        targetOptionIndex,
+                    ),
+                }
+            :   question,
+    );
+    return newQuestions;
 }
 
 /***
