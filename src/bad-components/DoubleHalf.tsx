@@ -7,7 +7,7 @@ function Doubler({
     setDhValue,
 }: {
     dhValue: number;
-    setDhValue: React.Dispatch<React.SetStateAction<number>>;
+    setDhValue: (dhValue: number) => void;
 }): React.JSX.Element {
     return (
         <Button
@@ -25,7 +25,7 @@ function Halver({
     setDhValue,
 }: {
     dhValue: number;
-    setDhValue: React.Dispatch<React.SetStateAction<number>>;
+    setDhValue: (dhValue: number) => void;
 }): React.JSX.Element {
     return (
         <Button
