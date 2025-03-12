@@ -9,6 +9,7 @@ import { Counter } from "./components/Counter";
 import { DoubleHalf } from "./bad-components/DoubleHalf";
 import { ShoveBox } from "./bad-components/ShoveBox";
 import { ChooseTeam } from "./bad-components/ChooseTeam";
+import { ColoredBox } from "./bad-components/ColoredBox";
 
 function App(): React.JSX.Element {
     return (
@@ -21,7 +22,7 @@ function App(): React.JSX.Element {
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
-            {/* <ColoredBox></ColoredBox> */}
+            <ColoredBox></ColoredBox>
             <hr></hr>
             <ShoveBox></ShoveBox>
             <hr></hr>
